@@ -2,6 +2,8 @@
 # Cmake
 # ====================================================================
 cmake_minimum_required(VERSION 3.8)
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules)
+include(avrdude)
 
 # ====================================================================
 # Set up for Arduino version and speed
@@ -15,6 +17,9 @@ set(CMAKE_TOOLCHAIN_FILE cmake/arduino_toolchain.txt)
 # ====================================================================
 project(PWM)
 
-set(CMAKE_MODULE_PATH cmake)
-
+# ====================================================================
+# Add stuff
+# ====================================================================
 add_subdirectory(src)
+
+avrprogram(Mine)
