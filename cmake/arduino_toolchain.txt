@@ -1,0 +1,10 @@
+set(CMAKE_SYSTEM_NAME Generic)
+
+find_program(AVR_GCC avr-gcc)
+find_program(AVR_GPP avr-g++)
+
+set(CMAKE_C_COMPILER ${AVR_GCC})
+set(CMAKE_CXX_COMPILER ${AVR_GPP})
+
+set(CMAKE_C_FLAGS_INIT "-Os -mmcu=${CMAKE_ARDUINO_MCU} -DF_CPU=${CMAKE_ARDUINO_FREQ}")
+set(CMAKE_CXX_FLAGS_INIT "-Os -mmcu=${CMAKE_ARDUINO_MCU} -DF_CPU=${CMAKE_ARDUINO_FREQ}")
