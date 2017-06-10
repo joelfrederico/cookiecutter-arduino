@@ -4,8 +4,14 @@ find_program(AVRDUDE avrdude)
 
 function(avrprogram target)
   set(hexfile ${CMAKE_CURRENT_BINARY_DIR}/${target}.hex)
-  add_custom_target(avrprogram
+
+  add_custom_command(
+    OUTPUT ${hexfile}
     COMMAND ${AVR_OBJCOPY} -O ihex -R .eeprom $<TARGET_FILE:${target}> ${hexfile}
+    DEPENDS ${target}
+    COMMENT "Copying to hex file"
+
+  add_custom_target(avrprogram
     COMMAND ${AVRDUDE} -V -c arduino -p ${CMAKE_ARDUINO_MCU} -P /dev/cu.usbmodem14611 -b 115200 -D -U flash:w:${hexfile}
     )
   add_dependencies(avrprogram ${target})
