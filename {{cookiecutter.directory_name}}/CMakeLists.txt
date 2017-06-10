@@ -15,11 +15,11 @@ set(CMAKE_TOOLCHAIN_FILE cmake/arduino_toolchain.txt)
 # ====================================================================
 # Project Options
 # ====================================================================
-project(PWM)
+project({{cookiecutter.project_name}})
 
 # ====================================================================
 # Add stuff
 # ====================================================================
 add_subdirectory(src)
 
-avrprogram(Mine)
+avrprogram(Main)
